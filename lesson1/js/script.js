@@ -62,7 +62,7 @@ differ( 5, 9 );
 function sum( a, b ) {
   var c = a + b;
 
-  if ( c > 10 && c > 20 ) {
+  if ( c > 10 && c < 20 ) {
     console.log( c );
   } else {
     console.log( 'Result is not in range between 11 and 19' );
@@ -87,7 +87,11 @@ division( 656, 4 );
 Напишите функцию с двумя аргументами. Сравните последние цыфри числа, используя %.
 */
 function compare( a, b ) {
-
+  if ( a % 10 == b % 10 ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 compare( 102, 32 );
 
@@ -97,6 +101,14 @@ compare( 102, 32 );
 function looping( arr ) {
   var count = 0,
       count2 = arr.length - 1;
+
+  for ( num in arr ) {
+    console.log( arr[num] );
+  }
+
+  arr.forEach( function( item, index ) {
+    console.log( item );
+  });
 
   while ( count < arr.length ) {
     console.log( arr[count] );
@@ -123,11 +135,11 @@ looping( [1, 154, 254, 184] );
 */
 function palindrom( string ) {
   var newString = '';
+  string = string.replace(/\s/g,'').toLowerCase();
 
   for (var i = string.length - 1; i >= 0; i--) {
-    newString += string[i].toLowerCase();
+    newString += string[i];
   }
-  newString = newString[0].toUpperCase() + newString.slice(1);
 
   if ( string == newString ) {
     console.log('This string is palindrom');
@@ -135,7 +147,7 @@ function palindrom( string ) {
     console.log("It's not a palindrom");
   }
 }
-palindrom( 'Шалаш' );
+palindrom( 'Я иду с мечем судия' );
 
 /*
 Write a program that prints the integers from 1 to 100.
@@ -167,22 +179,28 @@ detecting( 100 );
 Числа-вампиры
 */
 function vampire( a, b ) {
-  var multiply = a * b;
-  var lastA = a.toString().length - 1;
-  var lastB = b.toString().length - 1;
+  var origin = String(a) + String(b),
+      multiply = String( a * b );
 
-  if ( multiply.toString().length === a.toString().length * 2
-    && multiply.toString().length === b.toString().length * 2 ) {
+  origin = origin.split('').sort().join('');
+  multiply = multiply.split('').sort().join('');
+
+  var lastA = a.toString().length - 1,
+      lastB = b.toString().length - 1;
+
+  if ( multiply.length === a.toString().length * 2
+    && multiply.length === b.toString().length * 2 ) {
 
     if ( a.toString()[lastA] === 0 && b.toString()[lastB] === 0 ) {
       return false;
     } else {
-      if ( true ) {
-
+      if ( multiply == origin ) {
+        console.log('Vampires!');
+      } else {
+        console.log('Not vampires at all!');
       }
-      console.log('true');
     }
     return false;
   }
 }
-vampire( 15, 93 );
+vampire( 35, 41 );
