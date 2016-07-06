@@ -28,13 +28,14 @@ extractCharacters('Hello, world');
 */
 function createLogger( prefix ) {
   var today = new Date();
+  prefix = JSON.stringify( prefix );
 
   return function( anything ) {
     console.log( today.toISOString() + ' ' + prefix + ': ' + anything );
   }
 }
 
-var myLogger = createLogger( 'My Logger' );
+var myLogger = createLogger( {key: 'value'} );
 
 myLogger( 'some data' );
     // 2016-06-06T09:55:44.162Z My Logger: some data
