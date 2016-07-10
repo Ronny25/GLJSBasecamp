@@ -31,7 +31,7 @@ function createLogger( prefix ) {
   prefix = JSON.stringify( prefix );
 
   return function( anything ) {
-    console.log( today.toISOString() + ' ' + prefix + ': ' + anything );
+    console.log( today.toISOString() + ' ' + prefix + ': ' + JSON.stringify(anything) );
   }
 }
 

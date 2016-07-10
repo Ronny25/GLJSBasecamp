@@ -35,10 +35,21 @@ played - количество раз песня была проиграна (о�
 var collection = [ {played: 4, name: 'Song1'}, {played: 2, name: 'Song2'},
                    {played: 0, name: 'Song3'}, {played: 9, name: 'Song4'},
                    {played: 5, name: 'Song5'} ];
-function favoriteSong( item, index ) {
-  return console.log( "Песня " + item.name + ', была проиграна: ' + item.played + ', index: ' + index );
+
+function favoriteSong( item ) {
+
+  var most = Math.max.apply( null, item.map(function( count ) {
+    return count.played;
+  }));
+
+  for (var i = 0; i < item.length; i++) {
+    if (item[i].played === most) {
+      return console.log( "Песня " + item[i].name + ', была проиграна: ' + item[i].played + ' раз, index: ' + i );
+    }
+  }
 }
-collection.forEach( favoriteSong );
+
+favoriteSong(collection);
 
 /*
 1.Опишите конструктор объектов (класс) Calculator с двумя методами:
@@ -52,33 +63,49 @@ getCurrentSum - принимает индекс и возвращает резу
  - сумму чисел всех объектов на втором шаге (28)
  - для одного объекта сумму после третьего шага и общую результирующую сумму (должна совпадать)
 */
-function Calculator() {
-  var first = arguments;
+function Calculator( a, b, c ) {
   var result = 0;
-  // var sum1 = [].reduce.call(arguments, function(a, b) {
-  //   return a + b;
-  // }, 0);
-  for (var i = 0; i < first.length; i++) {
-    result += first[i];
-  }
-  console.log( result );
 
-  this.add = function() {
-    var result = 0,
-        second = arguments;
-    // var sum2 = [].reduce.call(arguments, function(a, b) {
-    //   return a + b;
-    // }, 0);
+  this.a = a,
+  this.b = b,
+  this.c = c,
 
-    result = sum2 + sum1;
+  this.add = function( num ) {
+    if ( typeof(num) === 'undefined' ) {
+      num = 0;
+    }
 
-    // return console.log( result );
+    result = this.a + this.b + this.c;
+    return result += num;
   },
-  this.getCurrentSum = function( index ) {
 
+  this.getCurrentSum = function( index ) {
+    switch ( index ) {
+      case 0:
+        return result = 0;
+      case 1:
+        return result = this.a;
+      case 2:
+        return result = this.a + this.b;
+      case 3:
+        return result = this.a + this.b + this.c;
+      default:
+        return result;
+    }
   }
 }
 var calc1 = new Calculator( 3, 8, 11 );
-var calc2 = new Calculator(  );
+var calc2 = new Calculator( 5, 12, 17 );
 
-calc1.add( 5, 12, 17 );
+var sum1 = calc1.add();
+var sum2 = calc2.add();
+var total = sum1 + sum2;
+console.log( total );
+
+var step1 = calc1.getCurrentSum(2);
+var step2 = calc2.getCurrentSum(2);
+var steps = step1 + step2;
+console.log( steps );
+
+var step3 = calc2.getCurrentSum(3);
+console.log( sum1 + step3 === total );
