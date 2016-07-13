@@ -48,7 +48,6 @@ function favoriteSong( item ) {
     }
   }
 }
-
 favoriteSong(collection);
 
 /*
@@ -63,35 +62,37 @@ getCurrentSum - принимает индекс и возвращает резу
  - сумму чисел всех объектов на втором шаге (28)
  - для одного объекта сумму после третьего шага и общую результирующую сумму (должна совпадать)
 */
-function Calculator( a, b, c ) {
-  var result = 0;
+function Calculator(  ) {
+  var arg = arguments,
+      result = 0;
 
-  this.a = a,
-  this.b = b,
-  this.c = c,
+  for (var i = 0, m = arg.length; i < m; ++i) {
+    result += +arg[i];
+  }
 
-  this.add = function( num ) {
-    if ( typeof(num) === 'undefined' ) {
-      num = 0;
+  this.add = function() {
+    var adding = arguments,
+        sum = 0;
+
+    for (var i = 0, n = adding.length; i < n; ++i) {
+      sum += +adding[i];
     }
 
-    result = this.a + this.b + this.c;
-    return result += num;
+    return result += sum;
   },
 
   this.getCurrentSum = function( index ) {
-    switch ( index ) {
-      case 0:
-        return result = 0;
-      case 1:
-        return result = this.a;
-      case 2:
-        return result = this.a + this.b;
-      case 3:
-        return result = this.a + this.b + this.c;
-      default:
-        return result;
+
+    if ( typeof index === 'undefined' ) {
+      return result;
     }
+
+    result = 0;
+    for (var i = 0; i < index; ++i) {
+      result += +arg[i];
+    }
+
+    return result;
   }
 }
 var calc1 = new Calculator( 3, 8, 11 );
