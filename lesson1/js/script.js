@@ -6,12 +6,13 @@
 */
 function check( a ) {
   if (typeof a !== 'number') {
-    console.log("It's not a number");
-  } else if ( a >= 8 && a <= 21 ) {
-    console.log('Hello');
-  } else {
-    console.log("It's not a good time for that");
+    return console.log("It's not a number");
   }
+  if ( a >= 8 && a <= 21 ) {
+    return console.log('Hello');
+  }
+
+  return console.log("It's not a good time for that");
 }
 check( 9 );
 
@@ -21,10 +22,10 @@ check( 9 );
 */
 function boolOrNot( arr, bool ) {
   if ( bool ) {
-    console.log( Math.max.apply(null, arr) );
-  } else {
-    console.log( Math.min.apply(null, arr) );
+    return console.log( Math.max.apply(null, arr) );
   }
+
+  return console.log( Math.min.apply(null, arr) );
 }
 boolOrNot( [5, 6, 2, 0, -3, 17, '7'], true );
 
@@ -35,10 +36,10 @@ boolOrNot( [5, 6, 2, 0, -3, 17, '7'], true );
 */
 function checkNumber( number ) {
   if ( number % 2 == 0 ) {
-    console.log( Math.pow(number, 2) );
-  } else {
-    console.log( number );
+    return console.log( Math.pow(number, 2) );
   }
+
+  return console.log( number );
 }
 checkNumber( 22 );
 
@@ -48,9 +49,11 @@ checkNumber( 22 );
 */
 function differ( a, b) {
   if ( a > b ) {
-    console.log( a - b );
-  } else if ( b > a ) {
-    console.log( a + b );
+    return console.log( a - b );
+  }
+
+  if ( b > a ) {
+    return console.log( a + b );
   }
 }
 differ( 5, 9 );
@@ -63,10 +66,10 @@ function sum( a, b ) {
   var c = a + b;
 
   if ( c > 10 && c < 20 ) {
-    console.log( c );
-  } else {
-    console.log( 'Result is not in range between 11 and 19' );
+    return console.log( c );
   }
+
+  return console.log( 'Result is not in range between 11 and 19' );
 }
 sum( 4, 6 );
 
@@ -75,11 +78,11 @@ sum( 4, 6 );
 Bыведите true, если нет false.
 */
 function division( a, b ) {
-  if ( a % b == 0 ) {
-    console.log( 'true' );
-  } else {
-    console.log( 'false' );
+  if ( a % b == 0 || b % a == 0 ) {
+    return console.log( 'true' );
   }
+
+  return console.log( 'false' );
 }
 division( 656, 4 );
 
@@ -88,10 +91,10 @@ division( 656, 4 );
 */
 function compare( a, b ) {
   if ( a % 10 == b % 10 ) {
-    return true;
-  } else {
-    return false;
+    return console.log( 'true' );
   }
+
+  return console.log( 'false' );
 }
 compare( 102, 32 );
 
@@ -142,10 +145,10 @@ function palindrom( string ) {
   }
 
   if ( string == newString ) {
-    console.log('This string is palindrom');
-  } else {
-    console.log("It's not a palindrom");
+    return console.log('This string is palindrom');
   }
+
+  return console.log("It's not a palindrom");
 }
 palindrom( 'Я иду с мечем судия' );
 
