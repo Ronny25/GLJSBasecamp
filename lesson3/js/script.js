@@ -62,44 +62,32 @@ getCurrentSum - принимает индекс и возвращает резу
  - сумму чисел всех объектов на втором шаге (28)
  - для одного объекта сумму после третьего шага и общую результирующую сумму (должна совпадать)
 */
-function Calculator(  ) {
-  var arg = arguments,
-      result = 0;
-
-  for (var i = 0, m = arg.length; i < m; ++i) {
-    result += +arg[i];
-  }
+function Calculator() {
+  var sum = 0,
+      arr = [];
 
   this.add = function() {
-    var adding = arguments,
-        sum = 0;
-
-    for (var i = 0, n = adding.length; i < n; ++i) {
-      sum += +adding[i];
+    for (var i = 0; i < arguments.length; i++) {
+      sum += arguments[i];
+      arr.push( sum );
     }
 
-    return result += sum;
+    return sum;
   },
 
   this.getCurrentSum = function( index ) {
-
     if ( typeof index === 'undefined' ) {
-      return result;
+      return arr[arr.length - 1];
     }
 
-    result = 0;
-    for (var i = 0; i < index; ++i) {
-      result += +arg[i];
-    }
-
-    return result;
+    return arr[index - 1];
   }
 }
-var calc1 = new Calculator( 3, 8, 11 );
-var calc2 = new Calculator( 5, 12, 17 );
+var calc1 = new Calculator();
+var calc2 = new Calculator();
 
-var sum1 = calc1.add();
-var sum2 = calc2.add();
+var sum1 = calc1.add( 3, 8, 11 );
+var sum2 = calc2.add( 5, 12, 17 );
 var total = sum1 + sum2;
 console.log( total );
 
