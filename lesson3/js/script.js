@@ -63,17 +63,21 @@ getCurrentSum - принимает индекс и возвращает резу
  - для одного объекта сумму после третьего шага и общую результирующую сумму (должна совпадать)
 */
 function Calculator() {
-  this.sum = 0,
   this.arr = []
 }
 
 Calculator.prototype.add = function() {
-  for (var i = 0; i < arguments.length; i++) {
-    this.sum += arguments[i];
-    this.arr.push( this.sum );
+  var sum = 0;
+  if ( (this.arr.length - 1) > 0 ) {
+    sum = this.arr[this.arr.length - 1];
   }
 
-  return this.sum;
+  for (var i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+    this.arr.push( sum );
+  }
+
+  return this.arr[this.arr.length - 1];
 };
 Calculator.prototype.getCurrentSum = function( index ) {
     if ( typeof index === 'undefined' ) {

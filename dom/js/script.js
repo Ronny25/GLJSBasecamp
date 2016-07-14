@@ -23,7 +23,7 @@ function searching0( searchName ) {
 }
 
 var searchName = 'span';
-// searching0(searchName);
+searching0(searchName);
 
 /*
 1. Создать функцию, которая принимает строку селектор и возвращает:
@@ -49,7 +49,7 @@ searching1(searchName);
 */
 function insertAfter( searchElem, insertElem ) {
   var el = document.querySelector(searchElem).nextElementSibling,
-      parent = document.querySelector('#sel');
+      parent = document.querySelector(searchElem).parentElement;
 
   parent.insertBefore(insertElem, el);
 }
@@ -61,30 +61,24 @@ insertAfter( '#line-0', newElem );
 
     	 Чтение.
     	 Что имеется в виду - Допустим есть элемент:
-    	 
     	    <titanic style="float:none"></titanic>
-
     	    Если передать в функцию 'style' - она должна выдать "float:none"
-
     	    <ninja color="black" visibility="hidden"></ninja>
-
     	    Если передать в функцию 'color' - она должна выдать "black"
 
     	 Установка.
          Что имеется в виду - Допустим есть элемент:
-
             <lego></lego>
-
             Если передать в функцию два параметра - аттрибут и значение, то нода должна выглядеть
-
             <lego style="display:block"></lego>
-
-
             Если значение этого аттрибута уже задано, устанавливается новое значение.
-
     	    Было:
     	    <chucknorris speed="5"></chucknorris>
-
     	    После вызова функции с передачей аттрибута и значения (speed Infinity):
     	    <chucknorris speed="Infinity"></chucknorris>
 */
+function attributing( attr, val ) {
+  var el = document.querySelector('#sel');
+  console.log(el.hasAttribute(attr));
+}
+attributing('color');
