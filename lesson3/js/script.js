@@ -64,7 +64,7 @@ getCurrentSum - принимает индекс и возвращает резу
 */
 function Calculator() {
   this.sum = 0,
-  this.arr = [];
+  this.arr = []
 }
 
 Calculator.prototype.add = function() {
