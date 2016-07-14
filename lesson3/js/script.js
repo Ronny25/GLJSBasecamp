@@ -68,7 +68,7 @@ function Calculator() {
 
 Calculator.prototype.add = function() {
   var sum = 0;
-  if ( (this.arr.length - 1) > 0 ) {
+  if ( (this.arr.length - 1) >= 0 ) {
     sum = this.arr[this.arr.length - 1];
   }
 
