@@ -15,11 +15,10 @@ t.getPerimeter();              // 6
 t.getType();                   // "triangle"
 */
 function Shape() {
-  this.type = 'triangle',
-
-  this.getType = function() {
-    return this.type;
-  }
+  this.type = 'triangle'
+}
+Shape.prototype.getType = function() {
+  return this.type;
 }
 
 function Triangle( a, b, c ) {
@@ -28,7 +27,7 @@ function Triangle( a, b, c ) {
   this.c = c
 }
 
-Triangle.prototype = Object.create(Shape.prototype);
+Triangle.prototype = new Shape();
 Triangle.prototype.constructor = Triangle;
 Triangle.prototype.getPerimeter = function() {
   return this.a + this.b + this.c;
