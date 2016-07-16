@@ -6,6 +6,9 @@
     	 - если в функцию передать ноду, функция возвращает ее тип (Node, Text, Comment etc)
 */
 function searching0( searchName ) {
+  if (typeof searchName !== 'string') {
+    return console.log(searchName.nodeName);
+  }
   var elements = document.querySelectorAll( searchName );
   if (elements.length === 1) {
     elements = document.querySelector( searchName );
@@ -24,6 +27,7 @@ function searching0( searchName ) {
 
 var searchName = 'span';
 searching0(searchName);
+searching0(document.body);
 
 /*
 1. Создать функцию, которая принимает строку селектор и возвращает:
@@ -48,12 +52,15 @@ searching1(searchName);
 2. Создать функцию аналог функции DOM insertBefore, но вставляет не до, а после указанного элемента.
 */
 function insertAfter( searchElem, insertElem ) {
-  var el = document.querySelector(searchElem).nextElementSibling,
-      parent = document.querySelector(searchElem).parentElement;
+  var el = document.querySelector(searchElem);
 
-  parent.insertBefore(insertElem, el);
+  el.insertAdjacentHTML('afterend', insertElem);
 }
-var newElem = document.createElement('p');
+// var newElem = '<p>';
+var newElem = "<ul>" +
+              " <li id='a'>Some A text</li>" +
+              " <li id='b'>Some B text</li>" +
+              "</ul>";
 insertAfter( '#line-0', newElem );
 
 /*
@@ -113,30 +120,24 @@ for (var i = 1; i < 65; i++) {
   squares.classList.add('square');
   squares.style.setProperty('display', 'inline-block');
   squares.style.setProperty('margin-top', '-4px');
+  squares.style.setProperty('width', '100px');
+  squares.style.setProperty('height', '100px');
 }
 
 document.body.appendChild(container);
 
 var all = document.querySelectorAll('.square');
-for (var i = 0; i < all.length; i++) {
-  all[i].style.setProperty('width', '100px');
-  all[i].style.setProperty('height', '100px');
+for (var i = 8; i < all.length; i += 16) {
+
+  for (var k = i + 1; k < i + 9; k++) {
+    all[k].style.setProperty('float', 'left');
+
+    if (k > all.length - 2) {
+      break;
+    }
+  }
 }
-for (var i = 0; i < 9; i++) {
-  all[i].style.setProperty('margin', '0');
-}
-for (var i = 9; i < 17; i++) {
-  all[i].style.setProperty('float', 'left');
-}
-for (var i = 25; i < 33; i++) {
-  all[i].style.setProperty('float', 'left');
-}
-for (var i = 41; i < 49; i++) {
-  all[i].style.setProperty('float', 'left');
-}
-for (var i = 57; i < 64; i++) {
-  all[i].style.setProperty('float', 'left');
-}
+
 for (var i = 1; i < all.length; i += 2) {
   all[i].classList.add('black');
   all[i].style.setProperty('background', 'black');
