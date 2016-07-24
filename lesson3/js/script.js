@@ -42,7 +42,7 @@ function favoriteSong( item ) {
     return count.played;
   }));
 
-  for (var i = 0; i < item.length; i++) {
+  for (var i = 0, l = item.length; i < l; i++) {
     if (item[i].played === most) {
       return console.log( "Песня " + item[i].name + ', была проиграна: ' + item[i].played + ' раз, index: ' + i );
     }
@@ -72,7 +72,7 @@ Calculator.prototype.add = function() {
     sum = this.arr[this.arr.length - 1];
   }
 
-  for (var i = 0; i < arguments.length; i++) {
+  for (var i = 0, l = arguments.length; i < l; i++) {
     sum += arguments[i];
     this.arr.push( sum );
   }

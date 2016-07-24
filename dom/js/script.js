@@ -127,18 +127,18 @@ for (var i = 1; i < 65; i++) {
 document.body.appendChild(container);
 
 var all = document.querySelectorAll('.square');
-for (var i = 8; i < all.length; i += 16) {
+for (var i = 8, l = all.length; i < l; i += 16) {
 
   for (var k = i + 1; k < i + 9; k++) {
     all[k].style.setProperty('float', 'left');
 
-    if (k > all.length - 2) {
+    if (k > l - 2) {
       break;
     }
   }
 }
 
-for (var i = 1; i < all.length; i += 2) {
+for (var i = 1, l = all.length; i < l; i += 2) {
   all[i].classList.add('black');
   all[i].style.setProperty('background', 'black');
 }

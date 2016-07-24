@@ -123,11 +123,11 @@ function looping( arr ) {
     count2--;
   } while ( count2 >= 0 );
 
-  for (var i = 0; i < arr.length; i++) {
+  for (var i = 0, l = arr.length; i < l; i++) {
     console.log( arr[i] );
   }
 
-  for (var i = arr.length - 1; i >= 0; i--) {
+  for (var l = arr.length, i = l - 1; i >= 0; i--) {
     console.log( arr[i] );
   }
 }
@@ -140,7 +140,7 @@ function palindrom( string ) {
   var newString = '';
   string = string.replace(/\s/g,'').toLowerCase();
 
-  for (var i = string.length - 1; i >= 0; i--) {
+  for (var l = string.length, i = l - 1; i >= 0; i--) {
     newString += string[i];
   }
 
@@ -164,7 +164,7 @@ function detecting( num ) {
     arr.push(i);
   }
 
-  for (var i = 0; i < arr.length; i++) {
+  for (var i = 0, l = arr.length; i < l; i++) {
     if (arr[i] % 3 == 0 && arr[i] % 5 == 0) {
       arr[i] = 'FizzBuzz';
     } else if (arr[i] % 3 == 0) {
