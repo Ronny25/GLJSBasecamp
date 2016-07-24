@@ -17,9 +17,8 @@ function compareByType (a, b) {
 		return 1;
 	} else if ( a == b ) {
 		return 0;
-	} else {
-		return -1;
 	}
+	return -1;
 }
 
 
@@ -32,9 +31,8 @@ function compareByType (a, b) {
 function increase (value) {
 	if ( typeof value === 'number' ) {
 		return ++value;
-	} else {
-		return -1;
 	}
+	return -1;
 }
 
 /*
@@ -46,9 +44,8 @@ function increase (value) {
 function join (array, separator) {
 	if (separator) {
 		return array.join(separator);
-	} else {
-		return array.join('-');
 	}
+	return array.join('-');
 }
 
 
