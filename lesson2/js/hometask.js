@@ -27,11 +27,12 @@ extractCharacters('Hello, world');
 с помощью которой можно будет выводить в консоль текстовую информацию.
 */
 function createLogger( prefix ) {
-  var today = new Date();
-  prefix = JSON.stringify( prefix );
+  var data = [new Date().toISOString(), prefix];
 
   return function( anything ) {
-    console.log( today.toISOString() + ' ' + prefix + ': ' + JSON.stringify(anything) );
+    data.push(': ');
+    data.push(anything);
+    console.log.apply(console, data);
   }
 }
 
